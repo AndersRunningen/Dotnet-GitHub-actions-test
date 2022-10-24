@@ -6,9 +6,6 @@ on:
     tags:
       - "[0-9].[0-9].[0-9]"
 
-env:
-  DOCKERFILE_PATH: App/Dockerfile
-
 jobs:
   docker:
     name: docker pull, tag and push
@@ -33,6 +30,8 @@ jobs:
       # Docker pull, tag & push
       - name: Docker pull, tag & push
         if: ${{ github.ref_type == 'tag' }}
+        env:
+          DOCKER_IMAGE: anderstest.azurecr.io/dotnet-github-actions-test
         run: |
           docker pull $DOCKER_IMAGE:latest
           docker image tag $DOCKER_IMAGE:latest $DOCKER_IMAGE:$SEM_TAG
