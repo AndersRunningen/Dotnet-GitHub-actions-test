@@ -1,0 +1,5 @@
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/bin/Release/net6.0/publish/DotNet.Docker
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/bin/Release/net6.0/publish/DotNet.Docker.dll
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/bin/Release/net6.0/publish/DotNet.Docker.deps.json
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/bin/Release/net6.0/publish/DotNet.Docker.runtimeconfig.json
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/bin/Release/net6.0/publish/DotNet.Docker.pdb

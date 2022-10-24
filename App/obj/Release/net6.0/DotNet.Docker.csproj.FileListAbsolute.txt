@@ -1,0 +1,15 @@
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/bin/Release/net6.0/DotNet.Docker
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/bin/Release/net6.0/DotNet.Docker.deps.json
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/bin/Release/net6.0/DotNet.Docker.runtimeconfig.json
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/bin/Release/net6.0/DotNet.Docker.dll
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/bin/Release/net6.0/ref/DotNet.Docker.dll
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/bin/Release/net6.0/DotNet.Docker.pdb
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/obj/Release/net6.0/DotNet.Docker.csproj.AssemblyReference.cache
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/obj/Release/net6.0/DotNet.Docker.GeneratedMSBuildEditorConfig.editorconfig
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/obj/Release/net6.0/DotNet.Docker.AssemblyInfoInputs.cache
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/obj/Release/net6.0/DotNet.Docker.AssemblyInfo.cs
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/obj/Release/net6.0/DotNet.Docker.csproj.CoreCompileInputs.cache
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/obj/Release/net6.0/DotNet.Docker.dll
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/obj/Release/net6.0/ref/DotNet.Docker.dll
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/obj/Release/net6.0/DotNet.Docker.pdb
+/Users/andersrunningen/repo/personal/MyApp/Dotnet-GitHub-actions-test/App/obj/Release/net6.0/DotNet.Docker.genruntimeconfig.cache
