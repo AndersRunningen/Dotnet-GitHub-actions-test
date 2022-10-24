@@ -67,7 +67,7 @@ jobs:
           context: App
           push: true
           file: ${{ env.DOCKERFILE_PATH }}
-          tags: ${{ env.DOCKER_IMAGE }}:${{ env.SHORT_SHA }}-${{ env.DATE }} , ${{ env.DOCKER_IMAGE }}:latest
+          tags: ${{ env.DOCKER_IMAGE }}:${{ env.SHORT_SHA }}-${{ env.DATE }}
 
       # Build & Push Docker Container Image to Azure Container registry
       - name: Build and push to main
