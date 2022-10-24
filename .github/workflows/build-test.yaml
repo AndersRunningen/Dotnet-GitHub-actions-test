@@ -15,14 +15,14 @@ jobs:
         with:
           dotnet-version: '6.0.x'
       - run: dotnet restore
-        working-directory: src
+        working-directory: app
       - run: dotnet build -c Release
-        working-directory: src
+        working-directory: app
       - run: dotnet test --no-build -c Release
-        working-directory: src
+        working-directory: app
       - run: mkdir app
       - run: dotnet publish --no-build -c Release -o ../app
-        working-directory: src
+        working-directory: app
       - uses: actions/upload-artifact@v2
         with:
           name: app
