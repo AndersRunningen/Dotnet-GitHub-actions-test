@@ -1,8 +1,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR /App
 
+RUN ls -la
+
 # Copy everything
 COPY . ./
+
+RUN ls -la
+
 # Restore as distinct layers
 RUN dotnet restore
 # Build and publish a release
