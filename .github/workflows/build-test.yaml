@@ -56,8 +56,21 @@ jobs:
         uses: docker/setup-buildx-action@v1
 
       # Build & Push Docker Container Image to Azure Container registry
-      - name: Build and push
+      - name: Build and push PR
         uses: docker/build-push-action@v3
+        if: github.event_name == 'pull_request'
+        env:
+          DOCKER_IMAGE: anderstest.azurecr.io/dotnet-github-actions-test
+        with:
+          context: App
+          push: true
+          file: ${{ env.DOCKERFILE_PATH }}
+          tags: ${{ env.DOCKER_IMAGE }}:${{ env.SHORT_SHA }}-${{ env.DATE }} , ${{ env.DOCKER_IMAGE }}:latest
+
+      # Build & Push Docker Container Image to Azure Container registry
+      - name: Build and push to main
+        uses: docker/build-push-action@v3
+        if: github.event_name != 'pull_request'
         env:
           DOCKER_IMAGE: anderstest.azurecr.io/dotnet-github-actions-test
         with:
