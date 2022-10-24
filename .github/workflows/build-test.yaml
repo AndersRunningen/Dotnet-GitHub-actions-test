@@ -62,4 +62,4 @@ jobs:
           context: App
           push: true
           file: ${{ env.DOCKERFILE_PATH }}
-          tags: ${{ env.DOCKER_IMAGE }}:${SHORT_SHA}-$(date +%s)
+          tags: ${{ env.DOCKER_IMAGE }}:${{ env.SHORT_SHA }}-$(date +%s)
