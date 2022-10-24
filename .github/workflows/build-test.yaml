@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+env:
+  DOCKERFILE_PATH: App/Dockerfile
+
 jobs:
   dotnet:
     name: dotnet build and test
@@ -23,10 +26,7 @@ jobs:
       - run: mkdir app
       - run: dotnet publish --no-build -c Release -o ../app
         working-directory: App
-      - uses: actions/upload-artifact@v2
-        with:
-          name: app
-          path: app
+
 
   docker:
     name: docker build and push
@@ -35,19 +35,31 @@ jobs:
     needs: dotnet
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
-        with:
-          name: app
-          path: app
-      - uses: docker/setup-buildx-action@v1
-      - uses: docker/login-action@v1
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Docker login to ACR
+        uses: docker/login-action@v2
         with:
           registry: anderstest.azurecr.io
           username: ${{ secrets.ACR_CLIENT_ID }}
           password: ${{ secrets.ACR_CLIENT_SECRET }}
-      - uses: docker/build-push-action@v2
+
+      # Set SHORT SHA
+      - run: |
+          echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      # Build setup
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      # Build & Push Docker Container Image to Azure Container registry
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        env:
+          DOCKER_IMAGE: anderstest.azurecr.io/dotnet-github-actions-test
         with:
-          context: app
+          context: .
           push: true
-          tags: anderstest.azurecr.io/dotnet-github-actions-test:${{ github.sha }}
+          file: ${{ env.DOCKERFILE_PATH }}
+          tags: ${{ env.DOCKER_IMAGE }}:${{ env.SHORT_SHA }}
