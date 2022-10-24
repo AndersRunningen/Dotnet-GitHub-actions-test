@@ -46,7 +46,8 @@ jobs:
           password: ${{ secrets.ACR_CLIENT_SECRET }}
 
       # Set SHORT SHA
-      - run: |
+      - name: Set SHORT_SHA and DATE ENV
+        run: |
           echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
           echo "DATE=$(date +%s)" >> $GITHUB_ENV
 
@@ -63,4 +64,4 @@ jobs:
           context: App
           push: true
           file: ${{ env.DOCKERFILE_PATH }}
-          tags: ${{ env.DOCKER_IMAGE }}:${{ env.SHORT_SHA }}-${{ env.DATE }}
+          tags: ${{ env.DOCKER_IMAGE }}:${{ env.SHORT_SHA }}-${{ env.DATE }} , ${{ env.DOCKER_IMAGE }}:latest
