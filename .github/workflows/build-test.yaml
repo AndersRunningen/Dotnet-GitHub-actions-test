@@ -5,10 +5,12 @@ on:
     branches: [main]
     paths-ignore:
       - '*.md'
+      - '.dependabot.yml'
   pull_request:
     branches: [main]
     paths-ignore:
       - '*.md'
+      - '.dependabot.yml'
 
 env:
   DOCKERFILE_PATH: App/Dockerfile
