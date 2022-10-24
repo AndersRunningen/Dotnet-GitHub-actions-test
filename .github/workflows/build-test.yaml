@@ -8,31 +8,31 @@ env:
   DOCKERFILE_PATH: App/Dockerfile
 
 jobs:
-  dotnet:
-    name: dotnet build and test
-    runs-on: ubuntu-latest
+  # dotnet:
+  #   name: dotnet build and test
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '6.0.x'
-      - run: dotnet restore
-        working-directory: App
-      - run: dotnet build -c Release
-        working-directory: App
-      - run: dotnet test --no-build -c Release
-        working-directory: App
-      - run: mkdir app
-      - run: dotnet publish --no-build -c Release -o ../app
-        working-directory: App
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-dotnet@v3
+  #       with:
+  #         dotnet-version: '6.0.x'
+  #     - run: dotnet restore
+  #       working-directory: App
+  #     - run: dotnet build -c Release
+  #       working-directory: App
+  #     - run: dotnet test --no-build -c Release
+  #       working-directory: App
+  #     - run: mkdir app
+  #     - run: dotnet publish --no-build -c Release -o ../app
+  #       working-directory: App
 
 
   docker:
     name: docker build and push
     runs-on: ubuntu-latest
 
-    needs: dotnet
+    # needs: dotnet
 
     steps:
       - name: Checkout
@@ -59,7 +59,7 @@ jobs:
         env:
           DOCKER_IMAGE: anderstest.azurecr.io/dotnet-github-actions-test
         with:
-          context: .
+          context: App
           push: true
           file: ${{ env.DOCKERFILE_PATH }}
           tags: ${{ env.DOCKER_IMAGE }}:${{ env.SHORT_SHA }}
