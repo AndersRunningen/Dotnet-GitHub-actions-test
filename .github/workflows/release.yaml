@@ -23,7 +23,8 @@ jobs:
           password: ${{ secrets.ACR_CLIENT_SECRET }}
 
       # Set semantic tag variable
-      - if: ${{ github.ref_type == 'tag' }}
+      - name: Set semantic tag variable
+        if: ${{ github.ref_type == 'tag' }}
         run: |
           echo "SEM_TAG=${{ github.ref_name }}" >> $GITHUB_ENV
 
