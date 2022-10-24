@@ -50,4 +50,4 @@ jobs:
         with:
           context: app
           push: true
-          tags: anderstest.azurecr.io/${{ github.event.repository.name }}:${{ github.sha }}
+          tags: anderstest.azurecr.io/dotnet-github-actions-test:${{ github.sha }}
