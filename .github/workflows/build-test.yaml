@@ -50,8 +50,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: anderstest.azurecr.io
-          username: ${{ secrets.ACR_CLIENT_ID }}
-          password: ${{ secrets.ACR_CLIENT_SECRET }}
+          username: ${{ secrets.AZURE_CLIENT_ID }}
+          password: ${{ secrets.AZURE_CLIENT_SECRET }}
 
       # Set SHORT SHA
       - name: Set SHORT_SHA and DATE ENV
