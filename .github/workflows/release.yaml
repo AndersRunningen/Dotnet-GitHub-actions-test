@@ -28,7 +28,7 @@ jobs:
         if: ${{ github.ref_type == 'tag' }}
         run: |
           echo "SEM_TAG=${{ github.ref_name }}" >> $GITHUB_ENV
-          echo "GIT_SHA=$(git rev-parse --short "$GITHUB.SHA")" >> $GITHUB_ENV
+          echo "GIT_SHA=$(git rev-parse --short $GITHUB.SHA)" >> $GITHUB_ENV
 
       # Docker pull, tag & push
       - name: Docker pull, tag & push
