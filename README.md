@@ -9,6 +9,11 @@ Commits/merges to main builds and pushes an image to ACR with Flux structure `22
 
 Push tags with semver `X.Y.Z` or `X.Y.Z-PRE` takes the latest image tag, pulls it down, retag with the given GitHub tag.
 
+```
+git tag --list #To check the last tags
+git tag 1.0.0
+git push --tags
+```
 
 **References**:
 - https://fluxcd.io/flux/
