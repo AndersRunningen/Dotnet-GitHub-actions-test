@@ -7,12 +7,14 @@ on:
       - '*.md'
       - '*/dependabot.yml'
       - '*.gitignore'
+      - '*release.yaml'
   pull_request:
     branches: [main]
     paths-ignore:
       - '*.md'
       - '*/dependabot.yml'
       - '*.gitignore'
+      - '*release.yaml'
 
 env:
   DOCKERFILE_PATH: App/Dockerfile
