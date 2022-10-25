@@ -18,24 +18,24 @@ env:
   DOCKERFILE_PATH: App/Dockerfile
 
 jobs:
-  # dotnet:
-  #   name: dotnet build and test
-  #   runs-on: ubuntu-latest
+  dotnet:
+    name: dotnet build and test
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-dotnet@v3
-  #       with:
-  #         dotnet-version: '6.0.x'
-  #     - run: dotnet restore
-  #       working-directory: App
-  #     - run: dotnet build -c Release
-  #       working-directory: App
-  #     - run: dotnet test --no-build -c Release
-  #       working-directory: App
-  #     - run: mkdir app
-  #     - run: dotnet publish --no-build -c Release -o ../app
-  #       working-directory: App
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x'
+      - run: dotnet restore
+        working-directory: App
+      - run: dotnet build -c Release
+        working-directory: App
+      - run: dotnet test --no-build -c Release
+        working-directory: App
+      - run: mkdir app
+      - run: dotnet publish --no-build -c Release -o ../app
+        working-directory: App
 
 
   docker:
@@ -55,7 +55,7 @@ jobs:
           username: ${{ secrets.AZURE_CLIENT_ID }}
           password: ${{ secrets.AZURE_CLIENT_SECRET }}
 
-      # Set SHORT SHA
+      # Set SHORT SHA and Date ENV
       - name: Set SHORT_SHA and DATE ENV
         run: |
           echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
@@ -65,7 +65,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      # Build & Push Docker Container Image to Azure Container registry
+      # Build & Push Docker Container Image to Azure Container registry on PR
       - name: Build and push PR
         uses: docker/build-push-action@v3
         if: github.event_name == 'pull_request'
@@ -77,7 +77,7 @@ jobs:
           file: ${{ env.DOCKERFILE_PATH }}
           tags: ${{ env.DOCKER_IMAGE }}:${{ env.SHORT_SHA }}-${{ env.DATE }}
 
-      # Build & Push Docker Container Image to Azure Container registry
+      # Build & Push Docker Container Image to Azure Container registry on PUSH to main
       - name: Build and push to main
         uses: docker/build-push-action@v3
         if: github.event_name != 'pull_request'
