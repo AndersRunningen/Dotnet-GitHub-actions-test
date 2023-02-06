@@ -69,7 +69,7 @@ jobs:
 
       # Build & Push Docker Container Image to Azure Container registry on PR
       - name: Build and push PR
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         if: github.event_name == 'pull_request'
         env:
           DOCKER_IMAGE: anderstest.azurecr.io/dotnet-github-actions-test
@@ -81,7 +81,7 @@ jobs:
 
       # Build & Push Docker Container Image to Azure Container registry on PUSH to main
       - name: Build and push to main
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         if: github.event_name != 'pull_request'
         env:
           DOCKER_IMAGE: anderstest.azurecr.io/dotnet-github-actions-test
